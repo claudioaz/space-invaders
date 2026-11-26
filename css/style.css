@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #050505;
+    color: #00ff66;
+    font-family: "Courier New", monospace;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 560px;
+    text-align: center;
+}
+
+.game-header h1 {
+    font-size: clamp(22px, 5vw, 34px);
+    letter-spacing: 5px;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px #00ff66;
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.score-board div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.score-board span {
+    font-size: 12px;
+}
+
+.score-board strong {
+    font-size: 20px;
+}
+
+.screen-container {
+    position: relative;
+    width: 100%;
+    border: 3px solid #00ff66;
+    background: #000;
+    box-shadow: 0 0 15px #003d19;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+.game-message {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+}
+
+.game-message h2 {
+    font-size: clamp(18px, 5vw, 28px);
+}
+
+.game-message p {
+    font-size: 12px;
+    text-align: center;
+}
+
+button {
+    background: #000;
+    color: #00ff66;
+    border: 2px solid #00ff66;
+    padding: 12px 20px;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #00ff66;
+    color: #000;
+}
+
+.game-footer {
+    margin-top: 18px;
+    font-size: 11px;
+    line-height: 2;
+}
+
+.mobile-controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.mobile-controls button {
+    flex: 1;
+    min-height: 55px;
+    font-size: 18px;
+    touch-action: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .mobile-controls {
+        display: none;
+    }
+}
+
+@media (max-height: 650px) and (min-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .game-header h1 {
+        margin-bottom: 10px;
+    }
+
+    .game-footer {
+        margin-top: 8px;
+    }
+}

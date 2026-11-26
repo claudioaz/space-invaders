@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#000000">
+
+    <title>Space Invaders</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="game-container">
+
+        <header class="game-header">
+            <h1>SPACE INVADERS</h1>
+
+            <div class="score-board">
+                <div>
+                    <span>RECORD</span>
+                    <strong id="high-score">0000</strong>
+                </div>
+
+                <div>
+                    <span>SCORE</span>
+                    <strong id="score">0000</strong>
+                </div>
+
+                <div>
+                    <span>LIVES</span>
+                    <strong id="lives">3</strong>
+                </div>
+            </div>
+        </header>
+
+        <section class="screen-container">
+
+            <canvas id="game-canvas"
+                    width="448"
+                    height="512">
+            </canvas>
+
+            <div id="game-message" class="game-message">
+                <h2>SPACE INVADERS</h2>
+                <p>PREPARE-SE PARA A INVASÃO</p>
+                <button id="start-button">START GAME</button>
+            </div>
+
+        </section>
+
+        <footer class="game-footer">
+            <p>INSERT COIN • 1 PLAYER</p>
+            <p>© SPACE INVADERS PROJECT</p>
+        </footer>
+
+        <section class="mobile-controls">
+            <button id="left-button" aria-label="Mover para esquerda">◀</button>
+            <button id="shoot-button" aria-label="Atirar">FIRE</button>
+            <button id="right-button" aria-label="Mover para direita">▶</button>
+        </section>
+
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
