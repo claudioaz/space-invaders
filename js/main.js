@@ -9,6 +9,9 @@ const gameMessage = document.getElementById("game-message");
 
 const player = new Player(canvas);
 
+// Como no original, só pode haver um tiro do jogador na tela por vez
+let projectile = null;
+
 let gameRunning = false;
 
 // Pinta o fundo preto (chamada a cada quadro)
@@ -32,12 +35,25 @@ function drawWaitingScreen() {
 // Lógica: muda o estado do jogo
 function update() {
     player.update();
+
+    if (projectile) {
+        projectile.update();
+
+        // Tiro saiu pelo topo: libera para um novo disparo
+        if (projectile.isOffScreen()) {
+            projectile = null;
+        }
+    }
 }
 
 // Visual: desenha o estado atual
 function draw() {
     clearScreen();
     player.draw(ctx);
+
+    if (projectile) {
+        projectile.draw(ctx);
+    }
 }
 
 // Game Loop: roda uma vez por quadro enquanto o jogo estiver ativo
@@ -71,6 +87,15 @@ document.addEventListener("keydown", (event) => {
     if (event.code === "ArrowRight" || event.code === "KeyD") {
         player.movingRight = true;
         event.preventDefault();
+    }
+
+    if (event.code === "Space") {
+        event.preventDefault();
+
+        // Só atira com o jogo ativo e sem outro tiro na tela
+        if (gameRunning && !projectile) {
+            projectile = player.shoot();
+        }
     }
 });
 

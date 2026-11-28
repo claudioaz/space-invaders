@@ -1,4 +1,5 @@
 import { CONFIG } from "../config.js";
+import { Projectile } from "./projectile.js";
 
 // Nave do jogador: guarda posição, lê o estado dos controles
 // e sabe se mover e se desenhar. Não conhece teclado nem loop.
@@ -40,6 +41,13 @@ export class Player {
         }
     }
 
+    // Cria um projétil saindo do canhão (centro da nave, no topo)
+    shoot() {
+        // Math.round evita meio pixel, que deixaria o tiro borrado
+        const x = Math.round(this.x + (this.width - CONFIG.PROJECTILE_WIDTH) / 2);
+        return new Projectile(x, this.y);
+    }
+
     // Desenha a nave com retângulos (pixel art simples)
     draw(ctx) {
         ctx.fillStyle = CONFIG.PLAYER_COLOR;
@@ -57,4 +65,3 @@ export class Player {
         ctx.fillRect(this.x, this.y + 16, 40, 8);
     }
 }
-
